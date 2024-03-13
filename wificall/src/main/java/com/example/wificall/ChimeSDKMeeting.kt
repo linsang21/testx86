@@ -17,8 +17,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.URL
-import java.util.Date
-import kotlin.random.Random
 
 
 class ChimeSDKMeeting {
@@ -30,9 +28,9 @@ class ChimeSDKMeeting {
 
     fun startMeeting(applicationContext: Context) {
         uiScope.launch {
-            val timestamp = Random(9000000)
             val meetingServerUrl = ""//TODO: add
-            val url = "${meetingServerUrl}join?title=eeee&name=test&region=us-west-2"
+            val meetingId = "" //TODO: add
+            val url = "${meetingServerUrl}join?title=${meetingId}&name=test&region=us-west-2"
             val response = HttpUtils.post(URL(url), "", DefaultBackOffRetry(), logger)
             if (response.httpException != null) {
                 logger.error(TAG, "Unable to join meeting. ${response.httpException}")
